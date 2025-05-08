@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,12 +9,10 @@
         /* Base Styles */
         :root {
             --primary: #2a2a72;
-            --primary-light: #4f4fa0;
             --secondary: #30cfd0;
             --dark: #1a1a2e;
             --light: #f8f9fa;
             --gray: #6c757d;
-            --success: #28a745;
         }
         
         * {
@@ -22,12 +21,14 @@
             box-sizing: border-box;
         }
         
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
-            overflow-x: hidden;
         }
         
         a {
@@ -40,35 +41,28 @@
             color: var(--secondary);
         }
         
-        /* Typography */
         h1, h2, h3, h4 {
             margin-bottom: 1rem;
             line-height: 1.2;
         }
         
-        h1 {
-            font-size: 3rem;
-        }
-        
         h2 {
+            text-align: center;
             font-size: 2.2rem;
+            margin-bottom: 2rem;
             position: relative;
-            display: inline-block;
+            padding-bottom: 0.5rem;
         }
         
         h2::after {
             content: '';
             position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 50px;
-            height: 4px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        h2:hover::after {
-            width: 100%;
         }
         
         p {
@@ -77,60 +71,42 @@
         
         /* Layout */
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
         
         .section {
-            padding: 5rem 0;
-            position: relative;
+            padding: 80px 0;
         }
         
         .section:nth-child(even) {
             background-color: #f0f4f8;
         }
         
-        /* Utilities */
-        .text-center {
-            text-align: center;
-        }
-        
-        .mb-2 {
-            margin-bottom: 2rem;
-        }
-        
-        /* Header & Navigation */
+        /* Header */
         header {
             background-color: var(--dark);
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(10px);
         }
         
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            padding: 20px 0;
         }
         
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--light);
-            display: flex;
-            align-items: center;
         }
         
         .logo span {
@@ -143,86 +119,54 @@
         }
         
         .nav-links li {
-            margin-left: 2rem;
+            margin-left: 30px;
         }
         
         .nav-links a {
             color: var(--light);
             font-weight: 500;
             position: relative;
-            padding-bottom: 5px;
         }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            color: var(--secondary);
         }
         
         .burger {
             display: none;
             cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
         }
         
         /* Hero Section */
         .hero {
             height: 100vh;
+            width: 100%;
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: var(--light);
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: pulse 15s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(0); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-            100% { transform: scale(3); opacity: 0; }
+            padding-top: 80px;
         }
         
         .hero-content {
             max-width: 700px;
-            z-index: 1;
         }
         
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease;
+            animation: fadeIn 1s ease;
         }
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
         }
         
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -241,42 +185,19 @@
             border-radius: 30px;
             text-transform: uppercase;
             font-weight: 600;
-            letter-spacing: 1px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
             box-shadow: 0 4px 15px rgba(48, 207, 208, 0.3);
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-light), var(--primary));
-            transition: all 0.3s ease;
-            z-index: -1;
         }
         
         .btn:hover {
+            background: var(--primary);
             color: var(--light);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(48, 207, 208, 0.4);
         }
         
-        .btn:hover::before {
-            width: 100%;
-        }
-        
         .social-links {
-            margin-top: 2.5rem;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            opacity: 0;
+            margin-top: 2rem;
         }
         
         .social-links a {
@@ -303,31 +224,20 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 40px;
             align-items: center;
         }
         
         .about-image {
-            position: relative;
+            border-radius: 10px;
             overflow: hidden;
-            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .about-image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-        }
-        
-        .about-content h2 {
-            margin-bottom: 2rem;
         }
         
         .skill-tags {
@@ -350,24 +260,21 @@
         .skill-tag:hover {
             background-color: var(--primary);
             color: var(--light);
-            transform: translateY(-3px);
         }
         
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
         }
         
         .project-card {
             background-color: white;
-            border-radius: 15px;
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            position: relative;
         }
         
         .project-card:hover {
@@ -378,22 +285,16 @@
         .project-image {
             height: 200px;
             overflow: hidden;
-            position: relative;
         }
         
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
         }
         
         .project-content {
-            padding: 1.5rem;
+            padding: 20px;
         }
         
         .project-content h3 {
@@ -436,67 +337,61 @@
         
         /* Experience Section */
         .timeline {
-            position: relative;
             max-width: 800px;
-            margin: 4rem auto 0;
+            margin: 0 auto;
+            position: relative;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
+            height: 100%;
             width: 2px;
-            background-color: var(--primary-light);
-            top: 0;
-            bottom: 0;
+            background-color: var(--primary);
             left: 50%;
             transform: translateX(-50%);
         }
         
         .timeline-item {
-            padding: 1rem 3rem 3rem;
+            margin-bottom: 40px;
             position: relative;
             width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            padding-right: 40px;
             left: 0;
         }
         
         .timeline-item:nth-child(even) {
+            padding-left: 40px;
             left: 50%;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             background-color: white;
-            border: 4px solid var(--secondary);
+            border: 3px solid var(--secondary);
             border-radius: 50%;
             top: 0;
-            right: -13px;
-            z-index: 1;
-            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -11px;
         }
         
         .timeline-item:nth-child(even)::before {
-            left: -13px;
-        }
-        
-        .timeline-item:hover::before {
-            background-color: var(--secondary);
-            transform: scale(1.2);
+            left: -11px;
         }
         
         .timeline-content {
-            padding: 1.5rem;
             background-color: white;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-item:hover .timeline-content {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
         .timeline-date {
@@ -508,15 +403,15 @@
         /* Contact Section */
         .contact-form {
             max-width: 600px;
-            margin: 3rem auto 0;
+            margin: 0 auto;
             background-color: white;
-            padding: 2.5rem;
-            border-radius: 15px;
+            padding: 30px;
+            border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         
         .form-control {
@@ -525,13 +420,11 @@
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
-            transition: all 0.3s ease;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(42, 42, 114, 0.1);
         }
         
         textarea.form-control {
@@ -540,7 +433,7 @@
         }
         
         .form-btn {
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             border: none;
             padding: 12px 30px;
@@ -548,21 +441,18 @@
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
             width: 100%;
         }
         
         .form-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(42, 42, 114, 0.3);
+            opacity: 0.9;
         }
         
         /* Footer */
         footer {
             background-color: var(--dark);
             color: var(--light);
-            padding: 3rem 0;
+            padding: 40px 0;
             text-align: center;
         }
         
@@ -572,14 +462,13 @@
         }
         
         .footer-links {
-            margin: 1.5rem 0;
+            margin: 20px 0;
         }
         
         .footer-links a {
             color: var(--light);
             margin: 0 15px;
             font-weight: 500;
-            transition: all 0.3s ease;
         }
         
         .footer-links a:hover {
@@ -589,18 +478,17 @@
         .copyright {
             opacity: 0.8;
             font-size: 0.9rem;
-            margin-top: 2rem;
+            margin-top: 20px;
         }
         
-        /* Responsive */
+        /* Responsive Design */
         @media screen and (max-width: 992px) {
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
             
             .about-image {
-                margin-bottom: 2rem;
+                margin-bottom: 30px;
             }
             
             .timeline::before {
@@ -609,9 +497,8 @@
             
             .timeline-item {
                 width: 100%;
-                padding-left: 70px;
-                padding-right: 20px;
-                left: 0;
+                padding-left: 60px;
+                padding-right: 0;
             }
             
             .timeline-item:nth-child(even) {
@@ -620,115 +507,43 @@
             
             .timeline-item::before,
             .timeline-item:nth-child(even)::before {
-                left: 18px;
-                top: 0;
+                left: 22px;
             }
         }
         
         @media screen and (max-width: 768px) {
-            .section {
-                padding: 4rem 0;
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: var(--dark);
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                padding: 15px 0;
+            }
+            
+            .burger {
+                display: block;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .nav-links {
-                position: absolute;
-                right: 0;
-                top: 100%;
-                background: var(--dark);
-                flex-direction: column;
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                max-height: 500px;
-            }
-            
-            .nav-links li {
-                margin: 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-links a {
-                display: block;
-                padding: 15px;
-            }
-            
-            .burger {
-                display: block;
-                font-size: 1.5rem;
-                color: var(--light);
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .animate-on-scroll.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Loader */
-        .loader-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            border-top-color: var(--secondary);
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .hidden {
-            opacity: 0;
-            visibility: hidden;
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader-container">
-        <div class="loader"></div>
-    </div>
-    
     <!-- Header -->
     <header>
         <div class="container">
@@ -761,105 +576,6 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fas fa-envelope"></i></a>
                 </div>
-                <div class="copyright">
-                    &copy; <span id="year"></span> Your Name. All Rights Reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Loader
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.loader-container').classList.add('hidden');
-            }, 800);
-        });
-        
-        // Mobile Navigation
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                nav.classList.remove('active');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Scroll Animation
-        const scrollElements = document.querySelectorAll('.animate-on-scroll');
-        
-        const elementInView = (el, percentageScroll = 100) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= (window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100)
-            );
-        };
-        
-        const displayScrollElement = (element) => {
-            element.classList.add('show');
-        };
-        
-        const hideScrollElement = (element) => {
-            element.classList.remove('show');
-        };
-        
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 90)) {
-                    displayScrollElement(el);
-                } else {
-                    hideScrollElement(el);
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-        });
-        
-        // Initial check
-        handleScrollAnimation();
-        
-        // Header Scroll Effect
-        const header = document.querySelector('header');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Set current year
-        document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Form submission (for demo)
-        const form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! This is a demo form, so it does not actually send an email.');
-                form.reset();
-            });
-        }
-    </script>
-</body>
-</html>"><i class="fas fa-envelope"></i></a>
-                </div>
             </div>
         </div>
     </section>
@@ -867,12 +583,12 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="text-center mb-2">About Me</h2>
+            <h2>About Me</h2>
             <div class="about-grid">
-                <div class="about-image animate-on-scroll">
+                <div class="about-image">
                     <img src="/api/placeholder/500/500" alt="Profile Photo">
                 </div>
-                <div class="about-content animate-on-scroll">
+                <div class="about-content">
                     <p>Hello! I'm a passionate software developer with expertise in building responsive web applications and solving complex problems. With a strong foundation in both front-end and back-end technologies, I create seamless user experiences backed by robust architecture.</p>
                     <p>I'm constantly learning and exploring new technologies to stay on the cutting edge of web development. When I'm not coding, you can find me hiking, reading tech blogs, or contributing to open-source projects.</p>
                     <div class="skill-tags">
@@ -893,10 +609,10 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="text-center mb-2">My Projects</h2>
+            <h2>My Projects</h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card animate-on-scroll">
+                <div class="project-card">
                     <div class="project-image">
                         <img src="/api/placeholder/400/250" alt="Project 1">
                     </div>
@@ -907,7 +623,6 @@
                             <span class="project-tag">React</span>
                             <span class="project-tag">Node.js</span>
                             <span class="project-tag">MongoDB</span>
-                            <span class="project-tag">Stripe API</span>
                         </div>
                         <div class="project-links">
                             <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
@@ -917,7 +632,7 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card animate-on-scroll">
+                <div class="project-card">
                     <div class="project-image">
                         <img src="/api/placeholder/400/250" alt="Project 2">
                     </div>
@@ -937,7 +652,7 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card animate-on-scroll">
+                <div class="project-card">
                     <div class="project-image">
                         <img src="/api/placeholder/400/250" alt="Project 3">
                     </div>
@@ -962,10 +677,10 @@
     <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="text-center mb-2">Experience & Education</h2>
+            <h2>Experience & Education</h2>
             <div class="timeline">
                 <!-- Experience 1 -->
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2023 - Present</div>
                         <h3>Senior Front-End Developer</h3>
@@ -975,7 +690,7 @@
                 </div>
                 
                 <!-- Experience 2 -->
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2020 - 2023</div>
                         <h3>Full-Stack Developer</h3>
@@ -985,7 +700,7 @@
                 </div>
                 
                 <!-- Education -->
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2016 - 2020</div>
                         <h3>BSc Computer Science</h3>
@@ -1000,8 +715,8 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="text-center mb-2">Get In Touch</h2>
-            <div class="contact-form animate-on-scroll">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
                 <form>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Your Name" required>
@@ -1039,4 +754,50 @@
                     <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+                <div class="copyright">
+                    &copy; <span id="current-year"></span> Your Name. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                nav.classList.remove('active');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Form submission (for demo)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! This is a demo form.');
+                form.reset();
+            });
+        }
+    </script>
+</body>
+</html>
