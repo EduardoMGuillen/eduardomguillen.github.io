@@ -481,6 +481,244 @@
             margin-top: 20px;
         }
         
+        /* Website Showcase Styles */
+        .showcase-container {
+            margin-top: 2rem;
+        }
+        
+        .showcase-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-btn:hover::before,
+        .nav-btn.active::before {
+            left: 0;
+        }
+        
+        .nav-btn:hover,
+        .nav-btn.active {
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .website-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .website-card.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+        
+        .website-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .website-preview {
+            position: relative;
+            background: #f8f9fa;
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
+        }
+        
+        .browser-header {
+            background: #e9ecef;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .browser-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #6c757d;
+        }
+        
+        .browser-dots span:nth-child(1) { background: #ff5f57; }
+        .browser-dots span:nth-child(2) { background: #ffbd2e; }
+        .browser-dots span:nth-child(3) { background: #28ca42; }
+        
+        .browser-url {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #6c757d;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .website-screenshot {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .website-screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .website-card:hover .website-screenshot img {
+            transform: scale(1.05);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(42, 42, 114, 0.9), rgba(48, 207, 208, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .website-card:hover .overlay {
+            opacity: 1;
+        }
+        
+        .overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .website-card:hover .overlay-content {
+            transform: translateY(0);
+        }
+        
+        .overlay-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .overlay-content p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .visit-btn {
+            background: white;
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .visit-btn:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .website-info {
+            padding: 25px;
+        }
+        
+        .website-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .website-info p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Animation for filtering */
+        .website-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* Responsive Design */
         @media screen and (max-width: 992px) {
             .about-grid {
@@ -540,6 +778,20 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+            
+            .websites-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .showcase-nav {
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -552,6 +804,7 @@
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#showcase">Showcase</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -585,7 +838,7 @@
             <h2>About Me</h2>
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQGefHdD5xkm1w/profile-displayphoto-shrink_800_800/B4EZW1rgBoHMAc-/0/1742509834717?e=1752105600&v=beta&t=H-WE05oTLvX-t72i7MdfDlhFKCdy_2RmbibcPEyT_V8" alt="Eduardo Maldonado Guillen">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQGefHdD5xkm1w/profile-displayphoto-shrink_800_800/B4EZW1rgBoHMAc-/0/1742509834717?e=1762387200&v=beta&t=MNthElHZGM1zSaieQXlElpbCL6-txJTE9kxHpDyegMU" alt="Eduardo Maldonado Guillen">
                 </div>
                 <div class="about-content">
                     <p>I'm a Mechatronics Engineer with experience in full-stack web development, passionate about building efficient and scalable applications. I specialize in Python-based technologies and enjoy working with modern frameworks to deliver robust front-end and back-end solutions.</p>
@@ -602,6 +855,332 @@
                         <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">SQL</span>
                         <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Website Showcase Section -->
+    <section id="showcase" class="section">
+        <div class="container">
+            <h2>Website Showcase</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: var(--gray);">Explore the digital experiences I've crafted for clients across various industries</p>
+            
+            <div class="showcase-container">
+                <div class="showcase-nav">
+                    <button class="nav-btn active" data-filter="all">All Projects</button>
+                    <button class="nav-btn" data-filter="marketing">Marketing</button>
+                    <button class="nav-btn" data-filter="business">Business</button>
+                    <button class="nav-btn" data-filter="legal">Legal</button>
+                    <button class="nav-btn" data-filter="nonprofit">Non-Profit</button>
+                </div>
+                
+                <div class="websites-grid">
+                    <!-- CreativeIQ Marketing -->
+                    <div class="website-card" data-category="marketing">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">creativeiq.marketing</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="CreativeIQ Marketing">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>CreativeIQ Marketing</h4>
+                                        <p>Full-service digital marketing agency</p>
+                                        <a href="https://creativeiq.marketing" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>CreativeIQ Marketing</h3>
+                            <p>Complete digital marketing platform with CRM integration, SEO services, and automated workflows.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">GoHighLevel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BizzTrack -->
+                    <div class="website-card" data-category="business">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">bizztrack.pro</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="BizzTrack">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>BizzTrack</h4>
+                                        <p>Business tracking and management platform</p>
+                                        <a href="https://www.bizztrack.pro" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>BizzTrack</h3>
+                            <p>Comprehensive business management solution with inventory tracking and analytics dashboard.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PyQt6</span>
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Texas Sugar Daddies -->
+                    <div class="website-card" data-category="business">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">texassugardaddies.com</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&h=300&fit=crop" alt="Texas Sugar Daddies">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>Texas Sugar Daddies</h4>
+                                        <p>Food catering and bakery business</p>
+                                        <a href="https://texassugardaddies.com/" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>Texas Sugar Daddies</h3>
+                            <p>Restaurant and catering website with online ordering system and menu management.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Morales Padi Law -->
+                    <div class="website-card" data-category="legal">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">moralespadialaw.com</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&h=300&fit=crop" alt="Morales Padi Law">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>Morales Padi Law</h4>
+                                        <p>Legal services and consultation</p>
+                                        <a href="https://www.moralespadialaw.com/homepage" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>Morales Padi Law</h3>
+                            <p>Professional law firm website with case studies and client consultation booking.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Legal Forms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swing Fore the Youth -->
+                    <div class="website-card" data-category="nonprofit">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">swingforetheyouth.com</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=500&h=300&fit=crop" alt="Swing Fore the Youth">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>Swing Fore the Youth</h4>
+                                        <p>Golf tournament and youth charity</p>
+                                        <a href="https://swingforetheyouth.com/" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>Swing Fore the Youth</h3>
+                            <p>Charity golf tournament website with event registration and donation processing.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Event Management</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fyzical San Antonio -->
+                    <div class="website-card" data-category="business">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">fyzicalsanantonio.com</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop" alt="Fyzical San Antonio">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>Fyzical San Antonio</h4>
+                                        <p>Physical therapy and wellness center</p>
+                                        <a href="https://fyzicalsanantonio.com/home" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>Fyzical San Antonio</h3>
+                            <p>Healthcare website with appointment booking and patient portal integration.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Healthcare</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hill Country Earth Designs -->
+                    <div class="website-card" data-category="business">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">hillcountryearthdesigns.com</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=300&fit=crop" alt="Hill Country Earth Designs">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>Hill Country Earth Designs</h4>
+                                        <p>Landscaping and outdoor design</p>
+                                        <a href="https://hillcountryearthdesigns.com/home" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>Hill Country Earth Designs</h3>
+                            <p>Landscaping business website with portfolio gallery and project showcase.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Gallery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- K-Aesthetic -->
+                    <div class="website-card" data-category="business">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">k-aesthetic.skin</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=500&h=300&fit=crop" alt="K-Aesthetic">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>K-Aesthetic</h4>
+                                        <p>Medical aesthetics and skincare</p>
+                                        <a href="https://k-aesthetic.skin/home" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>K-Aesthetic</h3>
+                            <p>Medical aesthetics clinic website with service booking and before/after galleries.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Medical</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tri County Interior -->
+                    <div class="website-card" data-category="business">
+                        <div class="website-preview">
+                            <div class="browser-header">
+                                <div class="browser-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="browser-url">tricountyinterior.com</div>
+                            </div>
+                            <div class="website-screenshot">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop" alt="Tri County Interior">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <h4>Tri County Interior</h4>
+                                        <p>Interior design and home renovation</p>
+                                        <a href="https://tricountyinterior.com/home" target="_blank" class="visit-btn">Visit Site</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="website-info">
+                            <h3>Tri County Interior</h3>
+                            <p>Interior design company website with project portfolio and consultation booking.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Design</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -757,6 +1336,7 @@
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
+                    <a href="#showcase">Showcase</a>
                     <a href="#projects">Projects</a>
                     <a href="#experience">Experience</a>
                     <a href="#contact">Contact</a>
@@ -831,6 +1411,30 @@
                 } else {
                     link.style.color = 'var(--light)';
                 }
+            });
+        });
+        
+        // Website Showcase Filtering
+        const filterButtons = document.querySelectorAll('.nav-btn');
+        const websiteCards = document.querySelectorAll('.website-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                websiteCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
             });
         });
     </script>
